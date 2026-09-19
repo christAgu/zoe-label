@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#581368" />
+    <meta
+      name="description"
+      content="ZOE LABEL prend soin de vos appartements, maisons, bureaux, restaurants et vitres. Découvrez nos services de nettoyage et préparez votre prochaine intervention."
+    />
+    <title>ZOE LABEL — La propreté. L’esprit libre.</title>
+    <link
+      rel="icon"
+      href="./assets/favicon.ico?no-inline"
+      type="image/x-icon"
+      sizes="16x16 32x32 48x48"
+    />
+    <link
+      rel="icon"
+      href="./assets/favicon.png?no-inline"
+      type="image/png"
+      sizes="128x128"
+    />
+    <link
+      rel="preload"
+      href="./assets/manrope-bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <svg
+      class="icon-library"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <defs>
+        <symbol id="i-spark" viewBox="0 0 24 24">
+          <path d="m12 1.5 3 7.5 7.5 3-7.5 3-3 7.5-3-7.5-7.5-3L9 9Z" />
+        </symbol>
+        <symbol id="i-broom" viewBox="0 0 24 24">
+          <path
+            d="M20 2.5 11.5 11M13.5 9.5l-2.6-.5a3 3 0 0 0-2.7 1L4 14.5c1.2 3 3.2 5.2 5.5 6.5l4.4-4.4a3 3 0 0 0 .9-2.6ZM7 16l2.5 2.5M10.5 13.5 13 16"
+          />
+        </symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+          <path d="M4 12h15m-6-6 6 6-6 6" />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <path d="m5 12 4 4L19 6" />
+        </symbol>
+        <symbol id="i-leaf" viewBox="0 0 24 24">
+          <path d="M20 3C9 1 2 7 5 15s17 6 15-12ZM4 21 15 10M9 16v-5" />
+        </symbol>
+        <symbol id="i-home" viewBox="0 0 24 24">
+          <path d="m3 10 9-7 9 7v10H3Zm6 10v-7h6v7" />
+        </symbol>
+        <symbol id="i-office" viewBox="0 0 24 24">
+          <path
+            d="M5 21V3h14v18M2 21h20M9 7h1m4 0h1M9 11h1m4 0h1M9 15h1m4 0h1M10 21v-3h4v3"
+          />
+        </symbol>
+        <symbol id="i-restaurant" viewBox="0 0 24 24">
+          <path d="M4 3v5c0 3 6 3 6 0V3M7 3v18M19 3c-4 2-5 7-5 10h5M19 3v18" />
+        </symbol>
+        <symbol id="i-window" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <path d="M12 3v18M3 12h18M6 6l3 3m6 6 3 3" />
+        </symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="16" rx="3" />
+          <path d="M7 3v4m10-4v4M3 11h18m-13 5h2m4 0h2" />
+        </symbol>
+        <symbol id="i-heart" viewBox="0 0 24 24">
+          <path d="M20 5c-3-3-7-1-8 1-1-2-5-4-8-1s-1 7 8 15c9-8 11-12 8-15Z" />
+        </symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 2" />
+        </symbol>
+        <symbol id="i-close" viewBox="0 0 24 24">
+          <path d="m6 6 12 12M6 18 18 6" />
+        </symbol>
+      </defs>
+    </svg>
+    <a class="skip-link" href="#main">Aller au contenu</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="#home" aria-label="ZOE LABEL — Accueil">
+          <img
+            class="logo-image"
+            src="./assets/zoe-label-logo.webp"
+            alt="ZOE LABEL"
+            width="334"
+            height="130"
+          />
+        </a>
+        <nav class="desktop-nav" aria-label="Navigation principale">
+          <a href="#services">Nos services</a
+          ><a href="#why-zoe">à propos de zoe label</a
+          ><a href="#how-it-works">Comment ça marche</a
+          ><a href="#questions">FAQ</a>
+        </nav>
+        <div class="header-actions">
+          <button
+            class="button button-small button-dark"
+            type="button"
+            data-book
+          >
+            Réserver
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+          </button>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            aria-label="Ouvrir le menu"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <nav
+        id="mobile-nav"
+        class="mobile-nav"
+        aria-label="Navigation mobile"
+        hidden
+      >
+        <a href="#services">Nos services</a
+        ><a href="#why-zoe">à propos de zoe label</a
+        ><a href="#how-it-works">Comment ça marche</a
+        ><a href="#questions">FAQ</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero-section" id="home" aria-labelledby="hero-title">
+        <div class="hero container">
+          <div class="hero-copy reveal">
+            <h1 id="hero-title">
+              Le label de<br />
+              <span class="hero-title-accent">la propreté.</span>
+            </h1>
+            <p class="hero-description">
+              À la maison comme au travail, nous prenons soin de vos espaces
+              pour vous laisser du temps pour l’essentiel.
+            </p>
+            <div class="hero-buttons">
+              <button class="button button-dark" type="button" data-book>
+                Réserver un nettoyage
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg>
+              </button>
+              <a class="hero-service-link" href="#services"
+                >Découvrir nos services</a
+              >
+            </div>
+            <p class="hero-note">
+              <strong>Votre espace. Votre rythme.</strong>
+              Un nettoyage ponctuel ou un entretien régulier.
+            </p>
+          </div>
+          <figure class="hero-visual reveal" style="--reveal-delay: 120ms">
+            <div class="hero-image-wrap">
+              <img
+                class="hero-image"
+                src="./assets/zoe-refined-team-768.webp"
+                srcset="
+                  ./assets/zoe-refined-team-768.webp   768w,
+                  ./assets/zoe-refined-team-1536.webp 1536w
+                "
+                sizes="(max-width: 850px) calc(100vw - 48px), (max-width: 1344px) 46vw, 610px"
+                alt="Une équipe de nettoyage en tenue bleue, avec une professionnelle souriante et son matériel au premier plan"
+                width="1536"
+                height="1024"
+                fetchpriority="high"
+              />
+            </div>
+            <figcaption class="hero-photo-caption">
+              <span>Le soin, dans chaque geste.</span>
+              <span class="hero-photo-rule" aria-hidden="true"></span>
+              <span class="hero-photo-signature">ZOE LABEL</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <div class="benefit-bar">
+        <div class="container benefit-inner reveal">
+          <p>
+            Bien dans votre espace.<br /><strong
+              >Bien dans votre quotidien.</strong
+            >
+          </p>
+          <span
+            ><svg class="icon" aria-hidden="true"><use href="#i-leaf" /></svg>Le
+            respect de votre intérieur</span
+          >
+          <span
+            ><svg class="icon" aria-hidden="true">
+              <use href="#i-calendar" /></svg
+            >À votre rythme</span
+          >
+          <span
+            ><svg class="icon" aria-hidden="true"><use href="#i-heart" /></svg
+            >L’attention dans chaque détail</span
+          >
+        </div>
+      </div>
+
+      <section
+        class="section container"
+        id="services"
+        aria-labelledby="services-title"
+      >
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow services-eyebrow">NOS SERVICES</p>
+            <h2 id="services-title">
+              À chaque espace,<br />sa
+              <span class="serif-word">touche de soin.</span>
+            </h2>
+          </div>
+          <p>
+            Chez vous, au bureau ou dans votre restaurant,<br />
+            le même soin, jusque dans vos vitrages.
+          </p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <div class="service-image">
+              <img
+                src="./assets/zoe-refined-home-768.webp"
+                srcset="
+                  ./assets/zoe-refined-home-768.webp   768w,
+                  ./assets/zoe-refined-home-1094.webp 1094w
+                "
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1150px) 50vw, 604px"
+                alt="Deux personnes nettoient un salon, l’une soulevant le canapé pendant que l’autre passe la serpillière"
+                width="1094"
+                height="730"
+                loading="lazy"
+                decoding="async"
+              /><span class="image-pill">POUR VOTRE CHEZ-VOUS</span>
+            </div>
+            <div class="service-content">
+              <span class="service-number">01</span>
+              <h3>Appartements &amp; maisons</h3>
+              <p>
+                Un intérieur où il fait bon vivre. Du salon à la cuisine, des
+                sols carrelés aux chambres, chaque pièce retrouve son éclat.
+              </p>
+              <button
+                class="service-link"
+                type="button"
+                data-book="Home cleaning"
+              >
+                Prendre soin de mon intérieur
+                <span class="circle-arrow"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow" /></svg
+                ></span>
+              </button>
+            </div>
+          </article>
+          <article class="service-card reveal" style="--reveal-delay: 100ms">
+            <div class="service-image">
+              <img
+                src="./assets/zoe-refined-office-768.webp"
+                srcset="
+                  ./assets/zoe-refined-office-768.webp   768w,
+                  ./assets/zoe-refined-office-1536.webp 1536w
+                "
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1150px) 50vw, 604px"
+                alt="Espace de bureaux partagé avec des postes de travail en bois, des fauteuils noirs et de grandes fenêtres"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              /><span class="image-pill">POUR VOS ÉQUIPES</span>
+            </div>
+            <div class="service-content">
+              <span class="service-number">02</span>
+              <h3>Entretien de bureaux</h3>
+              <p>
+                Un cadre agréable pour mieux travailler. Postes de travail,
+                salles de réunion et espaces communs : chaque détail compte.
+              </p>
+              <button
+                class="service-link"
+                type="button"
+                data-book="Office cleaning"
+              >
+                Soigner mes espaces de travail
+                <span class="circle-arrow"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow" /></svg
+                ></span>
+              </button>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-image">
+              <img
+                class="restaurant-image"
+                src="./assets/zoe-refined-restaurant-768.webp"
+                srcset="
+                  ./assets/zoe-refined-restaurant-768.webp   768w,
+                  ./assets/zoe-refined-restaurant-1536.webp 1536w
+                "
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1150px) 50vw, 604px"
+                alt="Deux professionnels équipés de gants nettoient le sol d’une cuisine de restaurant"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              /><span class="image-pill">POUR BIEN ACCUEILLIR</span>
+            </div>
+            <div class="service-content">
+              <span class="service-number">03</span>
+              <h3>Nettoyage de restaurants</h3>
+              <p>
+                Une salle accueillante, des tables soignées et des sols propres.
+                Préparez un cadre agréable pour vos clients et vos équipes.
+              </p>
+              <button
+                class="service-link"
+                type="button"
+                data-book="Restaurant cleaning"
+              >
+                Prendre soin de mon restaurant
+                <span class="circle-arrow"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow" /></svg
+                ></span>
+              </button>
+            </div>
+          </article>
+          <article class="service-card reveal" style="--reveal-delay: 100ms">
+            <div class="service-image">
+              <img
+                src="./assets/zoe-refined-windows-768.webp"
+                srcset="
+                  ./assets/zoe-refined-windows-768.webp   768w,
+                  ./assets/zoe-refined-windows-1536.webp 1536w
+                "
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1150px) 50vw, 604px"
+                alt="Illustration d’une professionnelle nettoyant une baie vitrée à la raclette dans un quartier africain"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              /><span class="image-pill">POUR LAISSER ENTRER LA LUMIÈRE</span>
+            </div>
+            <div class="service-content">
+              <span class="service-number">04</span>
+              <h3>Nettoyage de vitres</h3>
+              <p>
+                Fenêtres, baies vitrées et vitrines accessibles : retrouvez des
+                surfaces nettes et toute la lumière de vos espaces.
+              </p>
+              <button
+                class="service-link"
+                type="button"
+                data-book="Window cleaning"
+              >
+                Faire briller mes vitres
+                <span class="circle-arrow">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </article>
+        </div>
+        <div class="service-extra reveal">
+          <svg class="icon" aria-hidden="true"><use href="#i-broom" /></svg>
+          <p>
+            <strong>Besoin d’un grand nettoyage ?</strong> Un soin en
+            profondeur, pour repartir du bon pied.
+          </p>
+          <button class="text-link" type="button" data-book="Deep cleaning">
+            Préparer mon grand nettoyage <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </section>
+
+      <section
+        class="why-section container"
+        id="why-zoe"
+        aria-labelledby="why-title"
+      >
+        <div class="why-photo reveal">
+          <img
+            src="./assets/zoe-refined-windows-768.webp"
+            srcset="
+              ./assets/zoe-refined-windows-768.webp   768w,
+              ./assets/zoe-refined-windows-1536.webp 1536w
+            "
+            sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1150px) 50vw, 550px"
+            alt="Illustration d’une professionnelle en tenue violette prenant soin d’une vitre, avec une rue arborée en arrière-plan"
+            width="1536"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="why-copy reveal">
+          <h2 id="why-title">
+            Votre intérieur, notre soin.<br />Votre temps,
+            <span class="serif-word">pour vous.</span>
+          </h2>
+          <p>
+            La propreté ne se voit pas seulement, elle se ressent. C’est ce
+            plaisir d’entrer, de respirer et de se sentir bien. C’est l’esprit
+            ZOE LABEL.
+          </p>
+          <ul class="care-list">
+            <li>
+              <span class="check-badge"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" /></svg
+              ></span>
+              <div>
+                <h3>Un service qui vous ressemble</h3>
+                <p>
+                  Vos habitudes, vos priorités et vos attentes guident notre
+                  soin.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="check-badge"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" /></svg
+              ></span>
+              <div>
+                <h3>Un quotidien plus léger</h3>
+                <p>
+                  Un besoin ponctuel ou un entretien régulier, selon votre
+                  rythme.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="check-badge"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-check" /></svg
+              ></span>
+              <div>
+                <h3>L’attention jusque dans les détails</h3>
+                <p>
+                  Animaux, surfaces délicates, produits préférés : dites-nous
+                  tout.
+                </p>
+              </div>
+            </li>
+          </ul>
+          <button class="text-link" type="button" data-book>
+            Faire place à la sérénité <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </section>
+
+      <section
+        class="section container process-section"
+        id="how-it-works"
+        aria-labelledby="process-title"
+      >
+        <div class="center-heading reveal">
+          <h2 id="process-title">Un intérieur soigné, sans complication.</h2>
+          <p>Préparez votre prochain nettoyage en quelques instants.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-step reveal">
+            <span class="step-number">01</span
+            ><svg class="process-icon" aria-hidden="true">
+              <use href="#i-home" />
+            </svg>
+            <h3>Choisissez votre service</h3>
+            <p>
+              Maison, bureaux, restaurant ou vitres ?<br />À chaque besoin, une
+              attention adaptée.
+            </p>
+          </article>
+          <article class="process-step reveal" style="--reveal-delay: 100ms">
+            <span class="step-number">02</span
+            ><svg class="process-icon" aria-hidden="true">
+              <use href="#i-calendar" />
+            </svg>
+            <h3>Indiquez votre créneau</h3>
+            <p>
+              Un jour, un horaire, votre rythme.<br />Choisissez le moment qui
+              vous convient.
+            </p>
+          </article>
+        </div>
+        <div class="center-button reveal">
+          <button class="button button-dark" type="button" data-book>
+            Planifier mon nettoyage
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="faq-section" id="questions" aria-labelledby="faq-title">
+        <div class="container faq-grid">
+          <div class="faq-heading reveal">
+            <h2 id="faq-title">
+              Vos questions,<br />en toute
+              <span class="serif-word">clarté.</span>
+            </h2>
+            <p>L’essentiel pour vous sentir en confiance.</p>
+            <svg class="faq-spark" aria-hidden="true">
+              <use href="#i-spark" />
+            </svg>
+          </div>
+          <div class="faq-list reveal">
+            <details open>
+              <summary>
+                Que comprend le nettoyage à domicile ?<span
+                  class="faq-toggle"
+                  aria-hidden="true"
+                ></span>
+              </summary>
+              <p>
+                Le nettoyage à domicile comprend le dépoussiérage des surfaces
+                accessibles, l’aspiration et le lavage des sols, le nettoyage de
+                la salle de bain et des surfaces de cuisine. Précisez vos
+                priorités dans les notes pour préparer une intervention adaptée.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Puis-je prévoir un entretien régulier ?<span
+                  class="faq-toggle"
+                  aria-hidden="true"
+                ></span>
+              </summary>
+              <p>
+                Oui. Vous pouvez choisir une intervention ponctuelle,
+                hebdomadaire ou toutes les deux semaines. La première visite et
+                le rythme des interventions devront être confirmés avec l’équipe
+                ZOE LABEL.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Dois-je être sur place pendant le nettoyage ?<span
+                  class="faq-toggle"
+                  aria-hidden="true"
+                ></span>
+              </summary>
+              <p>
+                C’est vous qui choisissez. Avant toute intervention confirmée,
+                les modalités d’accès sont à convenir directement avec l’équipe.
+                Ne saisissez pas de code de porte ou d’information d’accès
+                confidentielle dans les notes.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Puis-je préciser des besoins particuliers ?<span
+                  class="faq-toggle"
+                  aria-hidden="true"
+                ></span>
+              </summary>
+              <p>
+                Bien sûr. Indiquez vos produits préférés, la présence d’animaux,
+                les surfaces délicates ou les zones nécessitant plus
+                d’attention. Les demandes particulières et le périmètre de la
+                prestation seront à valider avant l’intervention.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Comment fonctionne la réservation sur ce site ?<span
+                  class="faq-toggle"
+                  aria-hidden="true"
+                ></span>
+              </summary>
+              <p>
+                Ce site propose une démonstration du parcours de réservation.
+                Choisissez un service et un créneau souhaité, puis téléchargez
+                votre récapitulatif. Aucune demande n’est envoyée, aucun
+                paiement n’est effectué et aucun créneau n’est réservé. La
+                confirmation nécessitera la connexion à un service de
+                réservation.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="closing-section container reveal"
+        aria-labelledby="closing-title"
+      >
+        <div class="closing-card">
+          <svg class="closing-star star-one" aria-hidden="true">
+            <use href="#i-spark" />
+          </svg>
+          <p class="eyebrow">UN QUOTIDIEN PLUS LÉGER COMMENCE ICI</p>
+          <h2 id="closing-title">
+            Moins de ménage.<br />Plus de
+            <span class="serif-word">temps pour vous.</span>
+          </h2>
+          <p>Confiez votre intérieur à ZOE LABEL. Retrouvez l’esprit libre.</p>
+          <button class="button button-accent" type="button" data-book>
+            Réserver un nettoyage
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-arrow" />
+            </svg></button
+          ><svg class="closing-star star-two" aria-hidden="true">
+            <use href="#i-spark" />
+          </svg>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer container reveal">
+      <div class="footer-top">
+        <a class="logo" href="#home" aria-label="ZOE LABEL — Accueil">
+          <img
+            class="logo-image"
+            src="./assets/zoe-label-logo.webp"
+            alt="ZOE LABEL"
+            width="334"
+            height="130"
+            loading="lazy"
+          />
+        </a>
+        <p>le label de la propreté</p>
+        <nav aria-label="Navigation de pied de page">
+          <a href="#services">Nos services</a
+          ><a href="#why-zoe">à propos de zoe label</a
+          ><a href="#questions">FAQ</a
+          ><button type="button" data-book>Réserver ↗</button>
+        </nav>
+      </div>
+      <address class="footer-contact" id="contact">
+        <div class="footer-contact-item">
+          <span class="footer-contact-label">E-mail</span>
+          <a href="mailto:zoelabel423@gmail.com">zoelabel423@gmail.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-label">Téléphone</span>
+          <a href="tel:+2290166519355"
+            >+229&nbsp;01&nbsp;66&nbsp;51&nbsp;93&nbsp;55</a
+          >
+          <a href="tel:+2290147532097"
+            >+229&nbsp;01&nbsp;47&nbsp;53&nbsp;20&nbsp;97</a
+          >
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-label">WhatsApp</span>
+          <a href="https://wa.me/2290196222318"
+            >+229&nbsp;01&nbsp;96&nbsp;22&nbsp;23&nbsp;18</a
+          >
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-label">Localisation</span>
+          <span>Abomey-Calavi, Bénin</span>
+        </div>
+      </address>
+      <div class="footer-bottom">
+        <p>réalisé par <a href="https://www.acxa.io/">Acxa Technology</a></p>
+      </div>
+    </footer>
+
+    <dialog id="booking-dialog" aria-labelledby="booking-title">
+      <button
+        class="dialog-close"
+        type="button"
+        aria-label="Fermer la réservation"
+      >
+        <svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
+      </button>
+      <div class="booking-header">
+        <p class="eyebrow">
+          <span class="mini-star">✳</span>VOTRE NETTOYAGE, SIGNÉ ZOE LABEL
+        </p>
+        <h2 id="booking-title">Préparons votre nettoyage.</h2>
+        <p class="booking-disclaimer">
+          Démonstration — aucune demande envoyée ni aucun créneau réservé.
+        </p>
+      </div>
+      <ol class="booking-progress">
+        <li class="active" aria-current="step"><span>1</span>Votre besoin</li>
+        <li><span>2</span>Vos coordonnées</li>
+        <li><span>3</span>Votre récapitulatif</li>
+      </ol>
+      <form id="booking-form">
+        <div id="booking-step-1">
+          <fieldset class="service-choices">
+            <legend>Quel espace souhaitez-vous nous confier ?</legend>
+            <label
+              ><input
+                type="radio"
+                name="service"
+                value="Home cleaning"
+                checked
+              /><span
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-home" /></svg
+                >Maison</span
+              ></label
+            ><label
+              ><input
+                type="radio"
+                name="service"
+                value="Office cleaning"
+              /><span
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-office" /></svg
+                >Bureaux</span
+              ></label
+            ><label
+              ><input
+                type="radio"
+                name="service"
+                value="Restaurant cleaning"
+              /><span
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-restaurant" /></svg
+                >Restaurant</span
+              ></label
+            ><label
+              ><input
+                type="radio"
+                name="service"
+                value="Window cleaning"
+              /><span
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-window" /></svg
+                >Vitres</span
+              ></label
+            ><label
+              ><input type="radio" name="service" value="Deep cleaning" /><span
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-spark" /></svg
+                >En profondeur</span
+              ></label
+            >
+          </fieldset>
+          <div class="form-row">
+            <label class="field"
+              >Surface à nettoyer<select name="size">
+                <option>Jusqu’à 75 m²</option>
+                <option selected>De 76 à 150 m²</option>
+                <option>De 151 à 250 m²</option>
+                <option>Plus de 250 m²</option>
+              </select></label
+            ><label class="field"
+              >À quelle fréquence ?<select name="frequency">
+                <option>Une seule fois</option>
+                <option>Chaque semaine</option>
+                <option>Toutes les 2 semaines</option>
+              </select></label
+            >
+          </div>
+          <fieldset class="calendar-field">
+            <legend>Choisissez la date souhaitée</legend>
+            <div class="calendar-heading">
+              <strong id="calendar-month" aria-live="polite"></strong>
+              <div>
+                <button
+                  id="previous-month"
+                  class="calendar-nav"
+                  type="button"
+                  aria-label="Mois précédent"
+                >
+                  ‹</button
+                ><button
+                  id="next-month"
+                  class="calendar-nav"
+                  type="button"
+                  aria-label="Mois suivant"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+            <div class="calendar-weekdays" aria-hidden="true">
+              <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span
+              ><span>Ven</span><span>Sam</span><span>Dim</span>
+            </div>
+            <div
+              id="calendar-days"
+              class="calendar-days"
+              role="group"
+              aria-label="Date souhaitée"
+            ></div>
+            <p id="selected-date" class="selected-date" aria-live="polite">
+              Sélectionnez un jour dans le calendrier.
+            </p>
+          </fieldset>
+          <fieldset class="time-choices">
+            <legend>
+              Heure d’arrivée souhaitée <span>(heure locale)</span>
+            </legend>
+            <label
+              ><input type="radio" name="time" value="09:00" checked /><span
+                >09 h 00</span
+              ></label
+            ><label
+              ><input type="radio" name="time" value="12:00" /><span
+                >12 h 00</span
+              ></label
+            ><label
+              ><input type="radio" name="time" value="15:00" /><span
+                >15 h 00</span
+              ></label
+            >
+          </fieldset>
+          <p id="date-error" class="form-error" role="alert" hidden>
+            Veuillez choisir une date pour continuer.
+          </p>
+          <button
+            id="next-step"
+            class="button button-dark full-width"
+            type="button"
+          >
+            Continuer
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+          </button>
+        </div>
+        <div id="booking-step-2" hidden>
+          <div class="booking-mini-summary" id="booking-mini-summary"></div>
+          <div class="form-row">
+            <label class="field"
+              >Votre nom<input
+                name="name"
+                type="text"
+                autocomplete="name"
+                placeholder="Camille Dupont"
+                maxlength="100"
+                required /></label
+            ><label class="field"
+              >Adresse e-mail<input
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="camille@exemple.fr"
+                maxlength="254"
+                required
+            /></label>
+          </div>
+          <label class="field"
+            >Adresse de l’intervention<input
+              name="address"
+              type="text"
+              autocomplete="off"
+              placeholder="Rue, ville, code postal"
+              maxlength="300"
+              required
+          /></label>
+          <label class="field"
+            >Une précision à nous partager ?
+            <span class="optional">(facultatif)</span
+            ><textarea
+              name="notes"
+              rows="3"
+              placeholder="Animaux, produits préférés, pièces à privilégier…"
+              maxlength="1000"
+            ></textarea>
+          </label>
+          <p class="privacy-note">
+            <svg class="icon" aria-hidden="true"><use href="#i-heart" /></svg
+            >Vos informations restent sur cette page. Elles ne sont pas
+            envoyées.
+          </p>
+          <div class="form-actions">
+            <button id="back-step" class="button button-outline" type="button">
+              Retour</button
+            ><button class="button button-dark" type="submit">
+              Voir le récapitulatif
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+            </button>
+          </div>
+        </div>
+      </form>
+      <div id="booking-step-3" hidden>
+        <div class="success-icon">
+          <svg aria-hidden="true"><use href="#i-check" /></svg>
+        </div>
+        <h3 class="success-title">Tout commence par un intérieur soigné.</h3>
+        <p class="success-description">
+          Voici votre récapitulatif. Il s’agit d’une démonstration : aucun
+          créneau n’a été réservé et aucun e-mail n’a été envoyé.
+        </p>
+        <dl id="booking-summary" class="booking-summary"></dl>
+        <button
+          id="download-plan"
+          class="button button-dark full-width"
+          type="button"
+        >
+          Télécharger le récapitulatif
+          <svg class="icon" aria-hidden="true">
+            <use href="#i-arrow" />
+          </svg></button
+        ><button id="edit-plan" class="text-link edit-plan" type="button">
+          Modifier mes préférences
+        </button>
+      </div>
+    </dialog>
+  </body>
+</html>
