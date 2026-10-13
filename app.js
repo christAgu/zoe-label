@@ -7,6 +7,7 @@ import {
   monthCells,
   planText,
   serviceLabel,
+  whatsappLink,
 } from "./booking.js";
 
 /**
@@ -33,6 +34,7 @@ const previousMonth = element("#previous-month", HTMLButtonElement);
 const nextMonth = element("#next-month", HTMLButtonElement);
 const selectedDateLabel = element("#selected-date", HTMLParagraphElement);
 const dateError = element("#date-error", HTMLParagraphElement);
+const whatsappButton = element("#whatsapp-plan", HTMLAnchorElement);
 const title = element("#booking-title", HTMLHeadingElement);
 const stepPanels = [1, 2, 3].map((step) =>
   element(`#booking-step-${step}`, HTMLDivElement),
@@ -315,7 +317,9 @@ form.addEventListener("submit", (event) => {
     detail.textContent = value;
     summary.append(term, detail);
   }
+  whatsappButton.href = whatsappLink(plan);
   showStep(3);
+  window.open(whatsappButton.href, "_blank", "noopener");
 });
 
 form.querySelectorAll("input").forEach((input) => {

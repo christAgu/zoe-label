@@ -32,16 +32,16 @@ The production site is generated in `dist/`.
 - Responsive navigation, home/office/restaurant/window-cleaning service cards, a deep-cleaning call to action, process section, and native FAQ accordions.
 - Smooth anchor navigation, scroll reveals, image transitions, and reduced-motion support.
 - Accessible native booking dialog with service, size, frequency, a calendar for the next 60 days, preferred arrival time, and customer details.
-- Local validation, editable summary, and a downloadable text cleaning plan. Customer data is never stored or transmitted and is cleared when the dialog closes.
+- Local validation, editable summary, WhatsApp hand-off of the request to the manager, and a downloadable text cleaning plan. Customer data is never stored and is cleared when the dialog closes.
 - Local fonts and images; the page makes no third-party runtime requests.
 
 ## Booking integration
 
-**This is a frontend booking preview, not a reservation system.** Times are preferences, not live availability. No request or email is sent, payment taken, or slot reserved. The dialog, FAQ, summary, and downloaded plan explicitly state this.
+Submitting the form opens WhatsApp (`https://wa.me/<number>?text=…`) with the booking summary pre-filled for the manager's number; the customer only has to press "Send". The same link is available as a button on the summary step in case the automatic opening was blocked. Times are preferences, not live availability: the manager confirms the slot, price and service area in the WhatsApp conversation. No payment is taken online.
 
-Before taking real bookings, connect a scheduling backend, validate availability on the server, prevent duplicate reservations, and send confirmed requests to the business. Configure real service areas, pricing, policies, and contact information. Replace the preview copy only when the live integration is ready.
+The manager's number is `MANAGER_WHATSAPP` in `booking.js` (keep it in sync with the WhatsApp link in the footer of `index.html`). Sending the message fully automatically (without the customer pressing "Send") would require a backend connected to the WhatsApp Business API.
 
-The form submit handler is in `app.js`; pure calendar and plan-formatting helpers are in `booking.js`.
+The form submit handler is in `app.js`; pure calendar, plan-formatting and WhatsApp-link helpers are in `booking.js`.
 
 ## Assets
 

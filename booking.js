@@ -78,14 +78,15 @@ export function serviceLabel(service) {
  * @property {string} notes
  */
 
+export const MANAGER_WHATSAPP = "2290196222318";
+
 /** @param {CleaningPlan} plan */
 export function planText(plan) {
   return [
     "ZOE LABEL — VOTRE RÉCAPITULATIF DE NETTOYAGE",
     "",
-    "DÉMONSTRATION — ceci n’est pas une réservation confirmée.",
-    "Aucune demande envoyée, aucun créneau réservé et aucun paiement effectué.",
-    "Les disponibilités, les tarifs, la zone d’intervention et la récurrence restent à confirmer avec ZOE LABEL.",
+    "Demande transmise à ZOE LABEL via WhatsApp.",
+    "Les disponibilités, les tarifs, la zone d’intervention et la récurrence restent à confirmer par ZOE LABEL.",
     "",
     `Service : ${serviceLabel(plan.service)}`,
     `Surface : ${plan.size}`,
@@ -97,6 +98,31 @@ export function planText(plan) {
     `Adresse : ${plan.address}`,
     `Notes : ${plan.notes || "Aucune"}`,
     "",
-    "Ce récapitulatif a été créé dans votre navigateur. Il n’a pas été envoyé à ZOE LABEL.",
+    "ZOE LABEL vous recontacte pour confirmer le créneau.",
   ].join("\n");
+}
+
+/** @param {CleaningPlan} plan */
+export function whatsappMessage(plan) {
+  return [
+    "*ZOE LABEL — Nouvelle demande de réservation*",
+    "",
+    `*Service :* ${serviceLabel(plan.service)}`,
+    `*Surface :* ${plan.size}`,
+    `*Fréquence :* ${plan.frequency}`,
+    `*Date souhaitée :* ${displayDate(plan.date)}`,
+    `*Arrivée souhaitée :* ${displayTime(plan.time)}`,
+    "",
+    `*Nom :* ${plan.name}`,
+    `*E-mail :* ${plan.email}`,
+    `*Adresse :* ${plan.address}`,
+    `*Notes :* ${plan.notes || "Aucune"}`,
+    "",
+    "Demande envoyée depuis le site ZOE LABEL.",
+  ].join("\n");
+}
+
+/** @param {CleaningPlan} plan @param {string} [number] */
+export function whatsappLink(plan, number = MANAGER_WHATSAPP) {
+  return `https://wa.me/${number}?text=${encodeURIComponent(whatsappMessage(plan))}`;
 }

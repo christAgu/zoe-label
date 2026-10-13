@@ -8,7 +8,22 @@ import {
   isBookable,
   monthCells,
   planText,
+  whatsappLink,
+  whatsappMessage,
+  MANAGER_WHATSAPP,
 } from "./booking.js";
+
+const samplePlan = {
+  service: "Office cleaning",
+  size: "De 151 à 250 m²",
+  frequency: "Chaque semaine",
+  date: "2026-09-23",
+  time: "15:00",
+  name: "Alex",
+  email: "alex@example.com",
+  address: "123 Test Street",
+  notes: "Priorité aux salles de réunion.",
+};
 
 test("booking range excludes today and includes only the next 60 days", () => {
   const today = new Date(2026, 8, 17, 23, 59);
@@ -61,29 +76,42 @@ test("arrival times display morning, noon and afternoon in French", () => {
   assert.equal(displayTime("15:00"), "15 h 00");
 });
 
-test("download retains preferences and explicitly avoids claiming a reservation", () => {
-  const text = planText({
-    service: "Office cleaning",
-    size: "De 151 à 250 m²",
-    frequency: "Chaque semaine",
-    date: "2026-09-23",
-    time: "15:00",
-    name: "Alex",
-    email: "alex@example.com",
-    address: "123 Test Street",
-    notes: "Priorité aux salles de réunion.",
-  });
+test("download retains preferences and explains the WhatsApp confirmation", () => {
+  const text = planText(samplePlan);
   assert.match(text, /^ZOE LABEL — VOTRE RÉCAPITULATIF DE NETTOYAGE/);
-  assert.match(text, /DÉMONSTRATION — ceci n’est pas une réservation confirmée/);
-  assert.match(
-    text,
-    /Aucune demande envoyée, aucun créneau réservé et aucun paiement effectué/,
-  );
+  assert.match(text, /Demande transmise à ZOE LABEL via WhatsApp/);
+  assert.match(text, /restent à confirmer par ZOE LABEL/);
   assert.match(text, /Service : Entretien de bureaux/);
   assert.match(text, /Surface : De 151 à 250 m²/);
   assert.match(text, /Fréquence souhaitée : Chaque semaine/);
   assert.match(text, /Date souhaitée : mer\. 23 septembre 2026/);
   assert.match(text, /Arrivée souhaitée : 15 h 00 \(heure locale\)/);
   assert.match(text, /Notes : Priorité aux salles de réunion/);
-  assert.match(text, /Il n’a pas été envoyé à ZOE LABEL/);
+  assert.match(text, /ZOE LABEL vous recontacte pour confirmer le créneau/);
+});
+
+test("WhatsApp message lists every booking detail for the manager", () => {
+  const text = whatsappMessage(samplePlan);
+  assert.match(text, /^\*ZOE LABEL — Nouvelle demande de réservation\*/);
+  assert.match(text, /\*Service :\* Entretien de bureaux/);
+  assert.match(text, /\*Date souhaitée :\* mer\. 23 septembre 2026/);
+  assert.match(text, /\*Arrivée souhaitée :\* 15 h 00/);
+  assert.match(text, /\*Nom :\* Alex/);
+  assert.match(text, /\*E-mail :\* alex@example.com/);
+  assert.match(text, /\*Adresse :\* 123 Test Street/);
+  assert.match(text, /\*Notes :\* Priorité aux salles de réunion\./);
+  assert.match(
+    whatsappMessage({ ...samplePlan, notes: "" }),
+    /\*Notes :\* Aucune/,
+  );
+});
+
+test("WhatsApp link targets the manager's number with the encoded message", () => {
+  const url = new URL(whatsappLink(samplePlan));
+  assert.equal(url.origin + url.pathname, `https://wa.me/${MANAGER_WHATSAPP}`);
+  assert.equal(url.searchParams.get("text"), whatsappMessage(samplePlan));
+  assert.match(
+    whatsappLink({ ...samplePlan, name: "A&B #1" }, "22900000000"),
+    /^https:\/\/wa\.me\/22900000000\?text=.*A%26B%20%231/,
+  );
 });

@@ -6,6 +6,8 @@ import { JSDOM } from "jsdom";
 let dom;
 let document;
 let revealObserver;
+/** @type {string[]} */
+const openedWindows = [];
 
 before(async () => {
   const html = await readFile(new URL("./index.html", import.meta.url), "utf8");
@@ -26,6 +28,10 @@ before(async () => {
     }
   }
   window.IntersectionObserver = TestIntersectionObserver;
+  window.open = (url) => {
+    openedWindows.push(String(url));
+    return null;
+  };
   window.HTMLDialogElement.prototype.showModal = function () {
     this.open = true;
   };
@@ -45,6 +51,7 @@ before(async () => {
     HTMLHeadingElement: window.HTMLHeadingElement,
     HTMLDListElement: window.HTMLDListElement,
     HTMLInputElement: window.HTMLInputElement,
+    HTMLAnchorElement: window.HTMLAnchorElement,
     HTMLTextAreaElement: window.HTMLTextAreaElement,
     FormData: window.FormData,
     IntersectionObserver: TestIntersectionObserver,
@@ -122,12 +129,20 @@ test("a valid plan renders user text safely and can be edited without losing det
   document.querySelector('[name="email"]').value = "alex@example.com";
   document.querySelector('[name="notes"]').value =
     '<img src="x" onerror="alert(1)">';
+  openedWindows.length = 0;
   form.requestSubmit();
   const summary = document.querySelector("#booking-summary");
   assert.equal(document.querySelector("#booking-step-3").hidden, false);
   assert.match(summary.textContent, /Alex Test/);
   assert.match(summary.textContent, /<img src="x"/);
   assert.equal(summary.querySelector("img"), null);
+  const whatsapp = document.querySelector("#whatsapp-plan");
+  assert.match(whatsapp.href, /^https:\/\/wa\.me\/2290196222318\?text=/);
+  const message = new URL(whatsapp.href).searchParams.get("text");
+  assert.match(message, /\*Nom :\* Alex Test/);
+  assert.match(message, /\*E-mail :\* alex@example.com/);
+  assert.match(message, /\*Notes :\* <img src="x" onerror="alert\(1\)">/);
+  assert.deepEqual(openedWindows, [whatsapp.href]);
   document.querySelector("#edit-plan").click();
   assert.equal(document.querySelector("#booking-step-1").hidden, false);
   document.querySelector("#next-step").click();

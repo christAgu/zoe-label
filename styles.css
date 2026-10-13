@@ -269,6 +269,16 @@ h3 {
   border: 1px solid var(--line);
   background: transparent;
 }
+.button-whatsapp {
+  background: #25d366;
+  color: #0b3d23;
+}
+.button-whatsapp:hover {
+  background: #1ebe5d;
+}
+.download-plan {
+  margin-top: 10px;
+}
 .menu-toggle {
   display: none;
   width: 38px;
