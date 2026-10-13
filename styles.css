@@ -1497,6 +1497,41 @@ legend {
   display: none !important;
 }
 
+@media (min-width: 851px) {
+  .site-header {
+    background: var(--brand);
+    border-bottom-color: rgb(255 255 255 / 10%);
+  }
+  .site-header.scrolled {
+    background: #4c0f5b;
+    border-color: rgb(255 255 255 / 14%);
+    box-shadow: 0 14px 34px -18px rgb(53 37 58 / 45%);
+  }
+  .logo {
+    padding: 6px 12px;
+    border-radius: 12px;
+    background: white;
+  }
+  .logo-image {
+    width: 132px;
+    height: 51px;
+  }
+  .desktop-nav {
+    color: rgb(255 255 255 / 78%);
+  }
+  .desktop-nav a:hover {
+    color: white;
+    background: rgb(255 255 255 / 12%);
+  }
+  .site-header .button-dark {
+    background: var(--accent);
+    color: #35103e;
+  }
+  .site-header .button-dark:hover {
+    background: #ffb747;
+    box-shadow: 0 6px 16px rgb(0 0 0 / 20%);
+  }
+}
 @media (min-width: 1500px) {
   .hero {
     padding-top: 55px;
