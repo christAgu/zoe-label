@@ -1061,11 +1061,6 @@ dialog::backdrop {
   width: 33px;
   height: 33px;
 }
-.booking-header .eyebrow {
-  font-size: 10px;
-  letter-spacing: 1.2px;
-  padding-right: 28px;
-}
 .booking-header h2 {
   font-size: 31px;
   letter-spacing: -1px;
