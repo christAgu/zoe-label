@@ -7,6 +7,7 @@ import {
   monthCells,
   planText,
   serviceLabel,
+  validPhone,
   whatsappLink,
 } from "./booking.js";
 
@@ -274,14 +275,20 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   if (stepPanels[1].hidden) return;
   if (!validDate()) return;
-  for (const name of ["name", "address"]) {
+  const messages = {
+    name: "Veuillez saisir votre nom.",
+    phone: "Veuillez saisir votre numéro de téléphone.",
+    city: "Veuillez saisir la ville de l’intervention.",
+  };
+  for (const [name, message] of Object.entries(messages)) {
     const input = element(`input[name="${name}"]`, HTMLInputElement);
+    const value = input.value.trim();
     input.setCustomValidity(
-      input.value.trim()
-        ? ""
-        : name === "name"
-          ? "Veuillez saisir votre nom."
-          : "Veuillez saisir l’adresse de l’intervention.",
+      !value
+        ? message
+        : name === "phone" && !validPhone(value)
+          ? "Veuillez saisir un numéro de téléphone valide."
+          : "",
     );
   }
   if (!form.reportValidity()) return;
@@ -293,8 +300,8 @@ form.addEventListener("submit", (event) => {
     date: selectedDate,
     time: fieldValue(data, "time"),
     name: fieldValue(data, "name"),
-    email: fieldValue(data, "email"),
-    address: fieldValue(data, "address"),
+    phone: fieldValue(data, "phone"),
+    city: fieldValue(data, "city"),
     notes: fieldValue(data, "notes"),
   };
   const summary = element("#booking-summary", HTMLDListElement);
@@ -306,8 +313,8 @@ form.addEventListener("submit", (event) => {
     ["Date", displayDate(plan.date)],
     ["Arrivée", `${displayTime(plan.time)} (heure locale)`],
     ["Nom", plan.name],
-    ["E-mail", plan.email],
-    ["Adresse", plan.address],
+    ["Téléphone", plan.phone],
+    ["Ville", plan.city],
   ];
   if (plan.notes) rows.push(["Notes", plan.notes]);
   for (const [label, value] of rows) {

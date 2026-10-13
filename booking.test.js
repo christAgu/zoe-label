@@ -8,6 +8,7 @@ import {
   isBookable,
   monthCells,
   planText,
+  validPhone,
   whatsappLink,
   whatsappMessage,
   MANAGER_WHATSAPP,
@@ -20,8 +21,8 @@ const samplePlan = {
   date: "2026-09-23",
   time: "15:00",
   name: "Alex",
-  email: "alex@example.com",
-  address: "123 Test Street",
+  phone: "+229 01 96 00 00 00",
+  city: "Cotonou",
   notes: "Priorité aux salles de réunion.",
 };
 
@@ -90,6 +91,24 @@ test("download retains preferences and explains the WhatsApp confirmation", () =
   assert.match(text, /ZOE LABEL vous recontacte pour confirmer le créneau/);
 });
 
+test("phone numbers accept local and international formats only", () => {
+  for (const value of [
+    "+229 01 96 22 23 18",
+    "0196222318",
+    "+33 6 12 34 56 78",
+    "(01) 96-22-23-18",
+  ])
+    assert.equal(validPhone(value), true, value);
+  for (const value of [
+    "",
+    "abc",
+    "12345",
+    "01 96 22 23 18 x",
+    "+229 01 96 22 23 18 00 11 22",
+  ])
+    assert.equal(validPhone(value), false, value);
+});
+
 test("WhatsApp message lists every booking detail for the manager", () => {
   const text = whatsappMessage(samplePlan);
   assert.match(text, /^\*ZOE LABEL — Nouvelle demande de réservation\*/);
@@ -97,8 +116,8 @@ test("WhatsApp message lists every booking detail for the manager", () => {
   assert.match(text, /\*Date souhaitée :\* mer\. 23 septembre 2026/);
   assert.match(text, /\*Arrivée souhaitée :\* 15 h 00/);
   assert.match(text, /\*Nom :\* Alex/);
-  assert.match(text, /\*E-mail :\* alex@example.com/);
-  assert.match(text, /\*Adresse :\* 123 Test Street/);
+  assert.match(text, /\*Téléphone :\* \+229 01 96 00 00 00/);
+  assert.match(text, /\*Ville :\* Cotonou/);
   assert.match(text, /\*Notes :\* Priorité aux salles de réunion\./);
   assert.match(
     whatsappMessage({ ...samplePlan, notes: "" }),

@@ -73,10 +73,15 @@ export function serviceLabel(service) {
  * @property {string} date
  * @property {string} time
  * @property {string} name
- * @property {string} email
- * @property {string} address
+ * @property {string} phone
+ * @property {string} city
  * @property {string} notes
  */
+
+/** @param {string} value */
+export function validPhone(value) {
+  return /^\+?\d{8,15}$/.test(value.replace(/[\s().-]/g, ""));
+}
 
 export const MANAGER_WHATSAPP = "2290196222318";
 
@@ -94,8 +99,8 @@ export function planText(plan) {
     `Date souhaitée : ${displayDate(plan.date)}`,
     `Arrivée souhaitée : ${displayTime(plan.time)} (heure locale)`,
     `Nom : ${plan.name}`,
-    `E-mail : ${plan.email}`,
-    `Adresse : ${plan.address}`,
+    `Téléphone : ${plan.phone}`,
+    `Ville : ${plan.city}`,
     `Notes : ${plan.notes || "Aucune"}`,
     "",
     "ZOE LABEL vous recontacte pour confirmer le créneau.",
@@ -114,8 +119,8 @@ export function whatsappMessage(plan) {
     `*Arrivée souhaitée :* ${displayTime(plan.time)}`,
     "",
     `*Nom :* ${plan.name}`,
-    `*E-mail :* ${plan.email}`,
-    `*Adresse :* ${plan.address}`,
+    `*Téléphone :* ${plan.phone}`,
+    `*Ville :* ${plan.city}`,
     `*Notes :* ${plan.notes || "Aucune"}`,
     "",
     "Demande envoyée depuis le site ZOE LABEL.",

@@ -112,21 +112,23 @@ test("a service CTA preselects its service and date is required before continuin
   );
 });
 
-test("required contact details and email validity block incomplete plans", () => {
+test("required contact details and phone validity block incomplete plans", () => {
   const form = document.querySelector("#booking-form");
   form.requestSubmit();
   assert.equal(document.querySelector("#booking-step-3").hidden, true);
   document.querySelector('[name="name"]').value = "Alex Test";
-  document.querySelector('[name="email"]').value = "not-an-email";
-  document.querySelector('[name="address"]').value = "123 Test Street";
-  assert.equal(form.checkValidity(), false);
+  document.querySelector('[name="phone"]').value = "abc";
+  document.querySelector('[name="city"]').value = "Cotonou";
   form.requestSubmit();
+  assert.equal(form.checkValidity(), false);
   assert.equal(document.querySelector("#booking-step-3").hidden, true);
 });
 
 test("a valid plan renders user text safely and can be edited without losing details", () => {
   const form = document.querySelector("#booking-form");
-  document.querySelector('[name="email"]').value = "alex@example.com";
+  const phone = document.querySelector('[name="phone"]');
+  phone.value = "+229 01 96 00 00 00";
+  phone.dispatchEvent(new dom.window.Event("input"));
   document.querySelector('[name="notes"]').value =
     '<img src="x" onerror="alert(1)">';
   openedWindows.length = 0;
@@ -140,15 +142,16 @@ test("a valid plan renders user text safely and can be edited without losing det
   assert.match(whatsapp.href, /^https:\/\/wa\.me\/2290196222318\?text=/);
   const message = new URL(whatsapp.href).searchParams.get("text");
   assert.match(message, /\*Nom :\* Alex Test/);
-  assert.match(message, /\*E-mail :\* alex@example.com/);
+  assert.match(message, /\*Téléphone :\* \+229 01 96 00 00 00/);
+  assert.match(message, /\*Ville :\* Cotonou/);
   assert.match(message, /\*Notes :\* <img src="x" onerror="alert\(1\)">/);
   assert.deepEqual(openedWindows, [whatsapp.href]);
   document.querySelector("#edit-plan").click();
   assert.equal(document.querySelector("#booking-step-1").hidden, false);
   document.querySelector("#next-step").click();
   assert.equal(
-    document.querySelector('[name="email"]').value,
-    "alex@example.com",
+    document.querySelector('[name="phone"]').value,
+    "+229 01 96 00 00 00",
   );
 });
 
@@ -197,8 +200,8 @@ for (const [service, label] of [
       document.querySelector("#booking-mini-summary").textContent.includes(label),
     );
     document.querySelector('[name="name"]').value = "Camille Test";
-    document.querySelector('[name="email"]').value = "camille@example.com";
-    document.querySelector('[name="address"]').value = "1 rue Exemple";
+    document.querySelector('[name="phone"]').value = "0196000000";
+    document.querySelector('[name="city"]').value = "Porto-Novo";
     document.querySelector("#booking-form").requestSubmit();
     assert.equal(document.querySelector("#booking-step-3").hidden, false);
     assert.equal(

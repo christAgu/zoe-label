@@ -851,22 +851,24 @@
                 maxlength="100"
                 required /></label
             ><label class="field"
-              >Adresse e-mail<input
-                name="email"
-                type="email"
-                autocomplete="email"
-                placeholder="camille@exemple.fr"
-                maxlength="254"
+              >Numéro de téléphone<input
+                name="phone"
+                type="tel"
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="+229 01 00 00 00 00"
+                pattern="[+0-9][0-9 ().-]{7,}"
+                maxlength="30"
                 required
             /></label>
           </div>
           <label class="field"
-            >Adresse de l’intervention<input
-              name="address"
+            >Ville de l’intervention<input
+              name="city"
               type="text"
-              autocomplete="off"
-              placeholder="Rue, ville, code postal"
-              maxlength="300"
+              autocomplete="address-level2"
+              placeholder="Cotonou, Abomey-Calavi, Porto-Novo…"
+              maxlength="100"
               required
           /></label>
           <label class="field"
