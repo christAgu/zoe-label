@@ -7,7 +7,9 @@ import {
   monthCells,
   planText,
   serviceLabel,
+  timeKey,
   validPhone,
+  validTime,
   whatsappLink,
 } from "./booking.js";
 
@@ -36,6 +38,18 @@ const nextMonth = element("#next-month", HTMLButtonElement);
 const selectedDateLabel = element("#selected-date", HTMLParagraphElement);
 const dateError = element("#date-error", HTMLParagraphElement);
 const whatsappButton = element("#whatsapp-plan", HTMLAnchorElement);
+const timeInput = element("#time-input", HTMLInputElement);
+const timeDisplay = element("#time-display", HTMLElement);
+const timeDialog = element("#time-dialog", HTMLDialogElement);
+const timeDialogValue = element("#time-dialog-value", HTMLParagraphElement);
+const clockFace = element("#clock-face", HTMLDivElement);
+const clockHand = element("#clock-hand", HTMLElement);
+const minuteButtons = [
+  ...(clockFace.parentElement?.querySelectorAll("[data-minute]") ?? []),
+].filter((node) => node instanceof HTMLButtonElement);
+const DEFAULT_TIME = "09:00";
+let pendingHour = 9;
+let pendingMinute = 0;
 const title = element("#booking-title", HTMLHeadingElement);
 const stepPanels = [1, 2, 3].map((step) =>
   element(`#booking-step-${step}`, HTMLDivElement),
@@ -194,6 +208,71 @@ function changeMonth(offset) {
 previousMonth.addEventListener("click", () => changeMonth(-1));
 nextMonth.addEventListener("click", () => changeMonth(1));
 
+/** @param {string} time */
+function setTime(time) {
+  timeInput.value = validTime(time) ? time : DEFAULT_TIME;
+  timeDisplay.textContent = displayTime(timeInput.value);
+}
+
+function renderClock() {
+  clockFace.querySelectorAll(".clock-hour").forEach((node) => node.remove());
+  for (let hour = 1; hour <= 24; hour += 1) {
+    const value = hour % 24;
+    const inner = hour > 12;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `clock-hour${inner ? " inner" : ""}${value === pendingHour ? " selected" : ""}`;
+    button.style.setProperty("--angle", `${(hour % 12) * 30}deg`);
+    button.style.setProperty("--radius", inner ? "74px" : "112px");
+    button.textContent = String(value).padStart(2, "0");
+    button.disabled = !validTime(timeKey(value, 0));
+    button.setAttribute("aria-label", `${value} heures`);
+    button.setAttribute("aria-pressed", String(value === pendingHour));
+    button.addEventListener("click", () => {
+      pendingHour = value;
+      if (!validTime(timeKey(pendingHour, pendingMinute))) pendingMinute = 0;
+      renderClock();
+    });
+    clockFace.append(button);
+  }
+  clockHand.style.setProperty("--angle", `${(pendingHour % 12) * 30}deg`);
+  clockHand.style.setProperty(
+    "--radius",
+    pendingHour > 12 || pendingHour === 0 ? "74px" : "112px",
+  );
+  for (const button of minuteButtons) {
+    const minute = Number(button.dataset.minute);
+    button.disabled = !validTime(timeKey(pendingHour, minute));
+    button.classList.toggle("selected", minute === pendingMinute);
+    button.setAttribute("aria-pressed", String(minute === pendingMinute));
+  }
+  timeDialogValue.textContent = displayTime(
+    timeKey(pendingHour, pendingMinute),
+  );
+}
+
+element("#time-picker", HTMLButtonElement).addEventListener("click", () => {
+  [pendingHour, pendingMinute] = timeInput.value.split(":").map(Number);
+  renderClock();
+  timeDialog.showModal();
+});
+for (const button of minuteButtons) {
+  button.addEventListener("click", () => {
+    pendingMinute = Number(button.dataset.minute);
+    renderClock();
+  });
+}
+element("#time-cancel", HTMLButtonElement).addEventListener("click", () =>
+  timeDialog.close(),
+);
+element("#time-confirm", HTMLButtonElement).addEventListener("click", () => {
+  setTime(timeKey(pendingHour, pendingMinute));
+  timeDialog.close();
+});
+timeDialog.addEventListener("click", (event) => {
+  if (event.target === timeDialog) timeDialog.close();
+});
+
 /** @param {FormData} data @param {string} name */
 function fieldValue(data, name) {
   const value = data.get(name);
@@ -217,6 +296,7 @@ function validDate() {
 document.querySelectorAll("[data-book]").forEach((button) => {
   button.addEventListener("click", () => {
     form.reset();
+    setTime(DEFAULT_TIME);
     plan = null;
     selectedDate = "";
     selectedDateLabel.textContent = "Sélectionnez un jour dans le calendrier.";
@@ -252,6 +332,7 @@ dialog.addEventListener("click", (event) => {
 dialog.addEventListener("close", () => {
   document.body.classList.remove("modal-open");
   form.reset();
+  setTime(DEFAULT_TIME);
   plan = null;
   element("#booking-summary", HTMLDListElement).replaceChildren();
   element("#booking-mini-summary", HTMLDivElement).textContent = "";
@@ -259,6 +340,7 @@ dialog.addEventListener("close", () => {
 
 element("#next-step", HTMLButtonElement).addEventListener("click", () => {
   if (!validDate()) return;
+  setTime(timeInput.value);
   const data = new FormData(form);
   element("#booking-mini-summary", HTMLDivElement).textContent =
     `${serviceLabel(fieldValue(data, "service"))} · ${displayDate(selectedDate)} · ${displayTime(fieldValue(data, "time"))} · ${fieldValue(data, "frequency")}`;

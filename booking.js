@@ -78,6 +78,22 @@ export function serviceLabel(service) {
  * @property {string} notes
  */
 
+export const SERVICE_HOURS = { first: 6, last: 21 };
+
+/** @param {number} hour @param {number} minute */
+export function timeKey(hour, minute) {
+  return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+}
+
+/** @param {string} time */
+export function validTime(time) {
+  if (!/^\d{2}:\d{2}$/.test(time)) return false;
+  const [hour, minute] = time.split(":").map(Number);
+  if (minute % 15 !== 0 || minute > 45) return false;
+  if (hour === SERVICE_HOURS.last) return minute === 0;
+  return hour >= SERVICE_HOURS.first && hour < SERVICE_HOURS.last;
+}
+
 /** @param {string} value */
 export function validPhone(value) {
   return /^\+?\d{8,15}$/.test(value.replace(/[\s().-]/g, ""));

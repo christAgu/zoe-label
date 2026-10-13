@@ -112,6 +112,49 @@ test("a service CTA preselects its service and date is required before continuin
   );
 });
 
+test("the clock dialog lets the customer pick a free arrival time", () => {
+  const timeDialog = document.querySelector("#time-dialog");
+  document.querySelector("#time-picker").click();
+  assert.equal(timeDialog.open, true);
+  const hours = [...document.querySelectorAll(".clock-hour")];
+  assert.equal(hours.length, 24);
+  assert.equal(hours.find((b) => b.textContent === "03").disabled, true);
+  assert.equal(hours.find((b) => b.textContent === "22").disabled, true);
+  assert.equal(hours.find((b) => b.textContent === "21").disabled, false);
+  hours.find((b) => b.textContent === "14").click();
+  document.querySelector('[data-minute="30"]').click();
+  assert.equal(
+    document.querySelector("#time-dialog-value").textContent,
+    "14 h 30",
+  );
+  document.querySelector("#time-cancel").click();
+  assert.equal(document.querySelector("#time-input").value, "09:00");
+  document.querySelector("#time-picker").click();
+  [...document.querySelectorAll(".clock-hour")]
+    .find((b) => b.textContent === "14")
+    .click();
+  document.querySelector('[data-minute="30"]').click();
+  document.querySelector("#time-confirm").click();
+  assert.equal(timeDialog.open, false);
+  assert.equal(document.querySelector("#time-input").value, "14:30");
+  assert.equal(document.querySelector("#time-display").textContent, "14 h 30");
+  document.querySelector("#time-picker").click();
+  [...document.querySelectorAll(".clock-hour")]
+    .find((b) => b.textContent === "21")
+    .click();
+  assert.equal(document.querySelector('[data-minute="30"]').disabled, true);
+  assert.equal(
+    document.querySelector("#time-dialog-value").textContent,
+    "21 h 00",
+  );
+  document.querySelector("#time-cancel").click();
+  document.querySelector("#next-step").click();
+  assert.match(
+    document.querySelector("#booking-mini-summary").textContent,
+    /14 h 30/,
+  );
+});
+
 test("required contact details and phone validity block incomplete plans", () => {
   const form = document.querySelector("#booking-form");
   form.requestSubmit();
@@ -197,7 +240,9 @@ for (const [service, label] of [
     document.querySelector(".calendar-day:not(:disabled)").click();
     document.querySelector("#next-step").click();
     assert.ok(
-      document.querySelector("#booking-mini-summary").textContent.includes(label),
+      document
+        .querySelector("#booking-mini-summary")
+        .textContent.includes(label),
     );
     document.querySelector('[name="name"]').value = "Camille Test";
     document.querySelector('[name="phone"]').value = "0196000000";

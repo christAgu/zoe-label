@@ -808,23 +808,22 @@
               Sélectionnez un jour dans le calendrier.
             </p>
           </fieldset>
-          <fieldset class="time-choices">
+          <fieldset class="time-field">
             <legend>
               Heure d’arrivée souhaitée <span>(heure locale)</span>
             </legend>
-            <label
-              ><input type="radio" name="time" value="09:00" checked /><span
-                >09 h 00</span
-              ></label
-            ><label
-              ><input type="radio" name="time" value="12:00" /><span
-                >12 h 00</span
-              ></label
-            ><label
-              ><input type="radio" name="time" value="15:00" /><span
-                >15 h 00</span
-              ></label
+            <input type="hidden" name="time" id="time-input" value="09:00" />
+            <button
+              id="time-picker"
+              class="time-picker"
+              type="button"
+              aria-haspopup="dialog"
+              aria-controls="time-dialog"
             >
+              <svg class="icon" aria-hidden="true"><use href="#i-clock" /></svg>
+              <strong id="time-display">09 h 00</strong>
+              <span class="time-picker-action">Choisir l’heure</span>
+            </button>
           </fieldset>
           <p id="date-error" class="form-error" role="alert" hidden>
             Veuillez choisir une date pour continuer.
@@ -931,6 +930,39 @@
           </svg></button
         ><button id="edit-plan" class="text-link edit-plan" type="button">
           Modifier mes préférences
+        </button>
+      </div>
+    </dialog>
+    <dialog
+      id="time-dialog"
+      class="time-dialog"
+      aria-labelledby="time-dialog-title"
+    >
+      <h3 id="time-dialog-title">Heure d’arrivée</h3>
+      <p class="time-dialog-hint">Nos équipes interviennent de 6 h à 21 h.</p>
+      <p id="time-dialog-value" class="time-dialog-value" aria-live="polite">
+        09 h 00
+      </p>
+      <div
+        id="clock-face"
+        class="clock-face"
+        role="group"
+        aria-label="Heure d’arrivée"
+      >
+        <span id="clock-hand" class="clock-hand" aria-hidden="true"></span>
+        <span class="clock-center" aria-hidden="true"></span>
+      </div>
+      <div class="minute-choices" role="group" aria-label="Minutes">
+        <button type="button" data-minute="0">h 00</button
+        ><button type="button" data-minute="15">h 15</button
+        ><button type="button" data-minute="30">h 30</button
+        ><button type="button" data-minute="45">h 45</button>
+      </div>
+      <div class="form-actions">
+        <button id="time-cancel" class="button button-outline" type="button">
+          Annuler</button
+        ><button id="time-confirm" class="button button-dark" type="button">
+          Valider
         </button>
       </div>
     </dialog>

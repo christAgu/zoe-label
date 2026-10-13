@@ -8,7 +8,9 @@ import {
   isBookable,
   monthCells,
   planText,
+  timeKey,
   validPhone,
+  validTime,
   whatsappLink,
   whatsappMessage,
   MANAGER_WHATSAPP,
@@ -89,6 +91,15 @@ test("download retains preferences and explains the WhatsApp confirmation", () =
   assert.match(text, /Arrivée souhaitée : 15 h 00 \(heure locale\)/);
   assert.match(text, /Notes : Priorité aux salles de réunion/);
   assert.match(text, /ZOE LABEL vous recontacte pour confirmer le créneau/);
+});
+
+test("arrival times stay within service hours on quarter-hour steps", () => {
+  for (const time of ["06:00", "09:15", "14:30", "20:45", "21:00"])
+    assert.equal(validTime(time), true, time);
+  for (const time of ["05:45", "21:15", "22:00", "09:10", "9:00", "", "ab:cd"])
+    assert.equal(validTime(time), false, time);
+  assert.equal(timeKey(7, 5), "07:05");
+  assert.equal(timeKey(0, 0), "00:00");
 });
 
 test("phone numbers accept local and international formats only", () => {

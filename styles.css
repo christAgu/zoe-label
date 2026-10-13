@@ -1119,29 +1119,164 @@ legend {
   margin-bottom: 11px;
 }
 .service-choices,
-.time-choices {
-  display: flex;
-  gap: 10px;
+.time-field {
   margin-bottom: 20px;
+}
+.time-picker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 12px 14px;
+  background: white;
+  font-size: 14px;
+  text-align: left;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+.time-picker:hover {
+  border-color: var(--brand);
+  background: #f0e6f4;
+}
+.time-picker .icon {
+  stroke: var(--brand);
+}
+.time-picker strong {
+  font-size: 16px;
+}
+.time-picker-action {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand);
+}
+.time-dialog {
+  width: min(360px, calc(100% - 32px));
+  padding: 26px;
+  text-align: center;
+}
+.time-dialog h3 {
+  font-size: 21px;
+}
+.time-dialog-hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.time-dialog-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--brand);
+  letter-spacing: 1px;
+  margin: 12px 0 16px;
+}
+.clock-face {
+  position: relative;
+  width: 272px;
+  height: 272px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: #f0e6f4;
+}
+.clock-hour {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 38px;
+  height: 38px;
+  margin: -19px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  background: transparent;
+  transform: rotate(var(--angle)) translateY(calc(var(--radius) * -1))
+    rotate(calc(var(--angle) * -1));
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.clock-hour.inner {
+  font-size: 11px;
+  color: var(--muted);
+}
+.clock-hour:hover:not(:disabled) {
+  background: #e3d2e9;
+}
+.clock-hour:disabled {
+  color: #c2b5c6;
+}
+.clock-hour.selected {
+  background: var(--brand);
+  color: white;
+}
+.clock-hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: var(--radius);
+  margin-left: -1px;
+  background: var(--brand);
+  transform-origin: top center;
+  transform: rotate(calc(var(--angle) + 180deg));
+  transition: transform 0.2s;
+}
+.clock-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px;
+  border-radius: 50%;
+  background: var(--brand);
+}
+.minute-choices {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.minute-choices button {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 10px 4px;
+  font-size: 13px;
+  background: white;
+  transition: background 0.2s;
+}
+.minute-choices button.selected {
+  border-color: var(--brand);
+  background: #f0e6f4;
+  box-shadow: inset 0 0 0 1px var(--brand);
+}
+.minute-choices button:disabled {
+  color: #c2b5c6;
+}
+.time-dialog .form-actions .button {
+  flex: 1;
+  min-height: 48px;
 }
 .service-choices {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-.service-choices label,
-.time-choices label {
+.service-choices label {
   flex: 1;
   position: relative;
 }
-.service-choices input,
-.time-choices input {
+.service-choices input {
   position: absolute;
   width: 1px;
   height: 1px;
   opacity: 0;
 }
-.service-choices label > span,
-.time-choices label > span {
+.service-choices label > span {
   display: flex;
   height: 100%;
   align-items: center;
@@ -1154,14 +1289,12 @@ legend {
   font-size: 12px;
   transition: background 0.2s;
 }
-.service-choices input:checked + span,
-.time-choices input:checked + span {
+.service-choices input:checked + span {
   border-color: var(--brand);
   background: #f0e6f4;
   box-shadow: inset 0 0 0 1px var(--brand);
 }
-.service-choices input:focus-visible + span,
-.time-choices input:focus-visible + span {
+.service-choices input:focus-visible + span {
   outline: 2px solid #9955ad;
   outline-offset: 3px;
 }
@@ -1273,14 +1406,10 @@ legend {
   margin: 8px 0 0;
   min-height: 16px;
 }
-.time-choices legend span {
+.time-field legend span {
   font-weight: 400;
   font-size: 10px;
   color: var(--muted);
-}
-.time-choices label > span {
-  padding: 10px 4px;
-  font-size: 11px;
 }
 .full-width {
   width: 100%;
