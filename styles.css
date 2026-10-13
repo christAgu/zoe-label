@@ -334,18 +334,22 @@ h3 {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background:
-    radial-gradient(
-      ellipse 40% 55% at 82% 20%,
-      rgb(237 149 28 / 14%),
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 45% 60% at 10% 85%,
-      rgb(88 19 104 / 9%),
-      transparent 72%
-    ),
-    var(--surface);
+  color: white;
+  background: #3f0b4b url("./assets/zoe-apartment-1536.webp") center / cover
+    no-repeat;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    100deg,
+    rgb(74 14 88 / 97%) 0%,
+    rgb(88 19 104 / 90%) 40%,
+    rgb(74 14 88 / 55%) 72%,
+    rgb(53 37 58 / 35%) 100%
+  );
 }
 .hero {
   display: grid;
@@ -371,14 +375,14 @@ h1 {
   letter-spacing: -0.055em;
 }
 .hero-title-accent {
-  color: var(--brand);
+  color: var(--accent);
 }
 .hero-description {
   max-width: 400px;
   margin-top: 26px;
   font-size: 18px;
   line-height: 1.7;
-  color: var(--muted);
+  color: rgb(255 255 255 / 82%);
 }
 .hero-buttons {
   display: flex;
@@ -392,7 +396,12 @@ h1 {
   border-radius: 999px;
   padding-inline: 26px;
   gap: 14px;
-  box-shadow: 0 12px 28px -14px rgb(88 19 104 / 55%);
+  background: var(--accent);
+  color: #35103e;
+  box-shadow: 0 14px 30px -14px rgb(0 0 0 / 55%);
+}
+.hero-buttons .button:hover {
+  background: #ffb747;
 }
 .hero-service-link {
   display: inline-flex;
@@ -400,8 +409,9 @@ h1 {
   gap: 10px;
   min-height: 56px;
   padding: 0 24px;
-  border: 1px solid var(--line);
+  border: 1px solid rgb(255 255 255 / 40%);
   border-radius: 999px;
+  color: white;
   font-size: 15px;
   font-weight: 600;
   transition:
@@ -415,9 +425,9 @@ h1 {
   transition: transform 0.25s;
 }
 .hero-service-link:hover {
-  color: var(--brand);
-  border-color: rgb(88 19 104 / 30%);
-  background: rgb(88 19 104 / 4%);
+  color: white;
+  border-color: white;
+  background: rgb(255 255 255 / 12%);
 }
 .hero-service-link:hover .icon {
   transform: translateX(3px);
@@ -452,7 +462,8 @@ h1 {
   overflow: hidden;
   border-radius: 28px;
   background: #e9e4e1;
-  box-shadow: 0 30px 60px -30px rgb(53 37 58 / 35%);
+  border: 1px solid rgb(255 255 255 / 25%);
+  box-shadow: 0 30px 60px -24px rgb(0 0 0 / 55%);
 }
 .hero-image {
   width: 100%;
@@ -1499,11 +1510,11 @@ legend {
 
 @media (min-width: 851px) {
   .site-header {
-    background: var(--brand);
-    border-bottom-color: rgb(255 255 255 / 10%);
+    background: #3a0a45;
+    border-bottom-color: rgb(255 255 255 / 12%);
   }
   .site-header.scrolled {
-    background: #4c0f5b;
+    background: #2f0838;
     border-color: rgb(255 255 255 / 14%);
     box-shadow: 0 14px 34px -18px rgb(53 37 58 / 45%);
   }
@@ -1639,6 +1650,17 @@ legend {
     height: auto;
     aspect-ratio: 3 / 2;
     border-radius: 22px;
+  }
+  .hero-section {
+    background-image: url("./assets/zoe-apartment-768.webp");
+  }
+  .hero-section::before {
+    background: linear-gradient(
+      180deg,
+      rgb(74 14 88 / 96%) 0%,
+      rgb(88 19 104 / 88%) 55%,
+      rgb(74 14 88 / 70%) 100%
+    );
   }
   .benefit-inner {
     display: grid;
