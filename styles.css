@@ -1248,13 +1248,31 @@ main h2 {
   background: white;
 }
 .step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffd84d;
   font-family: Manrope, sans-serif;
   font-size: 14px;
-  letter-spacing: 0.06em;
-  color: var(--brand);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.process-grid li {
+  position: relative;
+  overflow: hidden;
+}
+.process-grid li::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: #ffd84d;
 }
 .process-grid h3 {
-  margin-top: 28px;
+  margin-top: 22px;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.01em;
