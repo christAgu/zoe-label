@@ -1552,9 +1552,10 @@ main h2 {
   .hero::after {
     background: linear-gradient(
       0deg,
-      rgb(26 8 31 / 85%) 0%,
-      rgb(26 8 31 / 45%) 50%,
-      rgb(26 8 31 / 10%) 80%
+      rgb(26 8 31 / 92%) 0%,
+      rgb(26 8 31 / 70%) 45%,
+      rgb(26 8 31 / 25%) 70%,
+      rgb(26 8 31 / 5%) 90%
     );
   }
   .hero-content {
