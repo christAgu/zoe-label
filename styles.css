@@ -1216,7 +1216,19 @@ main h2 {
   color: var(--muted);
 }
 .guarantees-section {
-  padding-block: 0 96px;
+  padding-block: 96px;
+  background: var(--brand);
+  color: white;
+}
+.guarantees-section .center-heading .eyebrow {
+  color: #ffb36b;
+}
+.guarantees-section h2,
+.guarantees-section .center-heading h2 {
+  color: white;
+}
+.guarantees-section .center-heading p {
+  color: rgb(255 255 255 / 75%);
 }
 .guarantee-grid {
   margin: 0;
@@ -1228,8 +1240,13 @@ main h2 {
 }
 .guarantee-grid li {
   padding: 32px 28px;
-  border: 1px solid var(--line);
+  border: 1px solid rgb(255 255 255 / 14%);
   border-radius: 6px;
+  background: rgb(255 255 255 / 6%);
+  transition: background 0.25s;
+}
+.guarantee-grid li:hover {
+  background: rgb(255 255 255 / 11%);
 }
 .guarantee-icon {
   display: inline-flex;
@@ -1238,23 +1255,24 @@ main h2 {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--accent-soft);
+  background: #ee7a22;
 }
 .guarantee-icon .icon {
   width: 22px;
   height: 22px;
-  color: #ee7a22;
+  color: white;
 }
 .guarantee-grid h3 {
   margin-top: 22px;
   font-size: 17px;
   font-weight: 600;
   letter-spacing: 0;
+  color: white;
 }
 .guarantee-grid p {
   margin-top: 8px;
   font-size: 14.5px;
-  color: var(--muted);
+  color: rgb(255 255 255 / 72%);
 }
 .process-section {
   padding-block: 96px;
@@ -1590,7 +1608,7 @@ main h2 {
     padding-block: 64px;
   }
   .guarantees-section {
-    padding-block: 0 64px;
+    padding-block: 64px;
   }
   .guarantee-grid {
     grid-template-columns: 1fr 1fr;
