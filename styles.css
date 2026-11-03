@@ -1,23 +1,16 @@
 @font-face {
-  font-family: "DM Sans";
+  font-family: "Instrument Sans";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400 700;
   font-display: swap;
-  src: url("./assets/dm-sans-regular.ttf") format("truetype");
+  src: url("./assets/instrument-sans.woff2") format("woff2");
 }
 @font-face {
-  font-family: "DM Sans";
+  font-family: "Schibsted Grotesk";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400 900;
   font-display: swap;
-  src: url("./assets/dm-sans-semibold.ttf") format("truetype");
-}
-@font-face {
-  font-family: Manrope;
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("./assets/manrope-bold.ttf") format("truetype");
+  src: url("./assets/schibsted-grotesk.woff2") format("woff2");
 }
 
 :root {
@@ -28,7 +21,8 @@
   --accent: #ed951c;
   --accent-soft: #fff0db;
   --line: #e7dee9;
-  --font: "DM Sans", sans-serif;
+  --font: "Instrument Sans", sans-serif;
+  --font-display: "Schibsted Grotesk", sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -121,7 +115,7 @@ h3 {
 }
 h1,
 h2 {
-  font-family: Manrope, sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
 }
 h2 {
@@ -1255,7 +1249,7 @@ main h2 {
   height: 44px;
   border-radius: 50%;
   background: #ee7a22;
-  font-family: Manrope, sans-serif;
+  font-family: var(--font-display);
   font-size: 14px;
   letter-spacing: 0.04em;
   color: var(--ink);

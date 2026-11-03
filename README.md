@@ -93,4 +93,4 @@ provenant d’[Unsplash](https://unsplash.com/license) :
 - Office: https://images.unsplash.com/photo-1497366754035-f200968a6e72
 - Kitchen: https://images.unsplash.com/photo-1556912172-45b7abe8b7e1
 
-DM Sans and Manrope fonts are distributed under the SIL Open Font License. License texts are in `public/` and are included in production builds. Icons are inline SVG.
+Instrument Sans and Schibsted Grotesk fonts are distributed under the SIL Open Font License. License texts are in `public/` and are included in production builds. Icons are inline SVG.
