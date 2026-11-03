@@ -1216,7 +1216,7 @@ main h2 {
   color: var(--muted);
 }
 .guarantees-section {
-  padding-block: 96px;
+  padding-block: 56px;
   background: var(--brand);
   color: white;
 }
@@ -1230,16 +1230,26 @@ main h2 {
 .guarantees-section .center-heading p {
   color: rgb(255 255 255 / 75%);
 }
+.guarantees-section .center-heading {
+  margin-bottom: 28px;
+}
+.guarantees-section .center-heading h2 {
+  font-size: clamp(26px, 2.6vw, 34px);
+  letter-spacing: -1px;
+}
 .guarantee-grid {
   margin: 0;
   padding: 0;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 12px;
 }
 .guarantee-grid li {
-  padding: 32px 28px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 18px;
   border: 1px solid rgb(255 255 255 / 14%);
   border-radius: 6px;
   background: rgb(255 255 255 / 6%);
@@ -1249,29 +1259,31 @@ main h2 {
   background: rgb(255 255 255 / 11%);
 }
 .guarantee-icon {
+  flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: #ee7a22;
 }
 .guarantee-icon .icon {
-  width: 22px;
-  height: 22px;
+  width: 19px;
+  height: 19px;
   color: white;
 }
 .guarantee-grid h3 {
-  margin-top: 22px;
-  font-size: 17px;
+  margin-top: 0;
+  font-size: 15.5px;
   font-weight: 600;
   letter-spacing: 0;
   color: white;
 }
 .guarantee-grid p {
-  margin-top: 8px;
-  font-size: 14.5px;
+  margin-top: 4px;
+  font-size: 13.5px;
+  line-height: 1.5;
   color: rgb(255 255 255 / 72%);
 }
 .process-section {
@@ -1608,14 +1620,14 @@ main h2 {
     padding-block: 64px;
   }
   .guarantees-section {
-    padding-block: 64px;
+    padding-block: 44px;
   }
   .guarantee-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 10px;
   }
   .guarantee-grid li {
-    padding: 24px 20px;
+    padding: 16px;
   }
   .process-grid {
     grid-template-columns: 1fr;
