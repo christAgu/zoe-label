@@ -377,7 +377,6 @@ form.addEventListener("submit", (event) => {
   const data = new FormData(form);
   plan = {
     service: serviceLabel(fieldValue(data, "service")),
-    size: fieldValue(data, "size"),
     frequency: fieldValue(data, "frequency"),
     date: selectedDate,
     time: fieldValue(data, "time"),
@@ -390,7 +389,6 @@ form.addEventListener("submit", (event) => {
   summary.replaceChildren();
   const rows = [
     ["Service", plan.service],
-    ["Surface", plan.size],
     ["Fréquence", plan.frequency],
     ["Date", displayDate(plan.date)],
     ["Arrivée", `${displayTime(plan.time)} (heure locale)`],

@@ -68,7 +68,6 @@ export function serviceLabel(service) {
 /**
  * @typedef {object} CleaningPlan
  * @property {string} service
- * @property {string} size
  * @property {string} frequency
  * @property {string} date
  * @property {string} time
@@ -110,7 +109,6 @@ export function planText(plan) {
     "Les disponibilités, les tarifs, la zone d’intervention et la récurrence restent à confirmer par ZOE LABEL.",
     "",
     `Service : ${serviceLabel(plan.service)}`,
-    `Surface : ${plan.size}`,
     `Fréquence souhaitée : ${plan.frequency}`,
     `Date souhaitée : ${displayDate(plan.date)}`,
     `Arrivée souhaitée : ${displayTime(plan.time)} (heure locale)`,
@@ -129,7 +127,6 @@ export function whatsappMessage(plan) {
     "*ZOE LABEL — Nouvelle demande de réservation*",
     "",
     `*Service :* ${serviceLabel(plan.service)}`,
-    `*Surface :* ${plan.size}`,
     `*Fréquence :* ${plan.frequency}`,
     `*Date souhaitée :* ${displayDate(plan.date)}`,
     `*Arrivée souhaitée :* ${displayTime(plan.time)}`,

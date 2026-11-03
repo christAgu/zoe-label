@@ -18,7 +18,6 @@ import {
 
 const samplePlan = {
   service: "Office cleaning",
-  size: "De 151 à 250 m²",
   frequency: "Chaque semaine",
   date: "2026-09-23",
   time: "15:00",
@@ -85,7 +84,7 @@ test("download retains preferences and explains the WhatsApp confirmation", () =
   assert.match(text, /Demande transmise à ZOE LABEL via WhatsApp/);
   assert.match(text, /restent à confirmer par ZOE LABEL/);
   assert.match(text, /Service : Entretien de bureaux/);
-  assert.match(text, /Surface : De 151 à 250 m²/);
+  assert.doesNotMatch(text, /Surface/);
   assert.match(text, /Fréquence souhaitée : Chaque semaine/);
   assert.match(text, /Date souhaitée : mer\. 23 septembre 2026/);
   assert.match(text, /Arrivée souhaitée : 15 h 00 \(heure locale\)/);
