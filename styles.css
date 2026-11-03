@@ -1254,7 +1254,7 @@ main h2 {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #ffd84d;
+  background: #ee7a22;
   font-family: Manrope, sans-serif;
   font-size: 14px;
   letter-spacing: 0.04em;
@@ -1269,7 +1269,7 @@ main h2 {
   position: absolute;
   inset: 0 auto 0 0;
   width: 4px;
-  background: #ffd84d;
+  background: #ee7a22;
 }
 .process-grid h3 {
   margin-top: 22px;
