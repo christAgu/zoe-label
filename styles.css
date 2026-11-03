@@ -1068,13 +1068,16 @@ main h2 {
   gap: 12px;
 }
 .trust-bar {
+  background: var(--brand);
+  color: white;
+}
+.trust-bar-inner {
   margin-block: 0;
-  padding: 22px 0;
   list-style: none;
+  padding: 22px 24px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  border-bottom: 1px solid var(--line);
 }
 .trust-bar li {
   display: flex;
@@ -1083,7 +1086,11 @@ main h2 {
   gap: 10px;
   font-size: 14px;
 }
-.trust-bar .icon,
+.trust-bar .icon {
+  width: 20px;
+  height: 20px;
+  color: #ffb36b;
+}
 .care-list .icon {
   width: 20px;
   height: 20px;
@@ -1513,7 +1520,7 @@ main h2 {
   .service-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .trust-bar {
+  .trust-bar-inner {
     grid-template-columns: repeat(2, 1fr);
   }
   .trust-bar li {
@@ -1575,8 +1582,8 @@ main h2 {
     min-height: 46px;
     padding: 11px 20px;
   }
-  .trust-bar {
-    padding: 20px 0;
+  .trust-bar-inner {
+    padding: 20px 24px;
     gap: 14px 12px;
   }
   .trust-bar li {
