@@ -1258,7 +1258,7 @@ main h2 {
   color: var(--muted);
 }
 .process-section {
-  padding-block: 96px;
+  padding-block: 24px 96px;
   background: white;
 }
 .center-heading {
@@ -1603,7 +1603,7 @@ main h2 {
     height: 84px;
   }
   .process-section {
-    padding-block: 64px;
+    padding-block: 16px 64px;
   }
   .guarantees-section {
     padding-block: 44px;
