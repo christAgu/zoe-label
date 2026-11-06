@@ -1177,10 +1177,10 @@ main h2 {
   color: var(--ink);
 }
 .clients-section {
-  padding-block: 0 96px;
+  padding-block: 56px 24px;
 }
 .clients-title {
-  margin: 0 0 32px;
+  margin: 0 0 36px;
   font-family: var(--font);
   font-size: 12px;
   font-weight: 600;
@@ -1193,19 +1193,24 @@ main h2 {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  gap: 28px 64px;
+  gap: 32px;
+}
+.clients-grid li {
+  display: flex;
+  justify-content: center;
 }
 .clients-grid img {
   display: block;
   width: auto;
-  height: 72px;
+  max-width: 100%;
+  height: clamp(96px, 10vw, 150px);
+  object-fit: contain;
 }
 .clients-grid .is-square {
-  border-radius: 10px;
+  border-radius: 14px;
 }
 .split {
   padding-block: 0 96px;
@@ -1651,13 +1656,17 @@ main h2 {
     align-items: flex-start;
   }
   .clients-section {
-    padding-block: 0 64px;
+    padding-block: 40px 8px;
   }
   .clients-grid {
-    gap: 20px 32px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 24px;
+  }
+  .clients-grid li:first-child {
+    grid-column: 1 / -1;
   }
   .clients-grid img {
-    height: 56px;
+    height: 84px;
   }
   .split {
     padding-block: 0 64px;
