@@ -1265,19 +1265,8 @@ main h2 {
   color: var(--muted);
 }
 .guarantees-section {
-  padding-block: 56px;
-  background: var(--brand);
-  color: white;
-}
-.guarantees-section .center-heading .eyebrow {
-  color: #ffb36b;
-}
-.guarantees-section h2,
-.guarantees-section .center-heading h2 {
-  color: white;
-}
-.guarantees-section .center-heading p {
-  color: rgb(255 255 255 / 75%);
+  padding-block: 56px 64px;
+  background: #f3f1f4;
 }
 .guarantees-section .center-heading {
   margin-bottom: 28px;
@@ -1292,48 +1281,32 @@ main h2 {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 16px;
 }
 .guarantee-grid li {
   display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  padding: 18px 18px;
-  border: 1px solid rgb(255 255 255 / 14%);
-  border-radius: 6px;
-  background: rgb(255 255 255 / 6%);
-  transition: background 0.25s;
-}
-.guarantee-grid li:hover {
-  background: rgb(255 255 255 / 11%);
-}
-.guarantee-icon {
-  flex: none;
-  display: inline-flex;
+  gap: 16px;
   align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #ee7a22;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: white;
 }
-.guarantee-icon .icon {
-  width: 19px;
-  height: 19px;
-  color: white;
+.guarantee-illus {
+  flex: none;
+  width: 72px;
+  height: 72px;
 }
 .guarantee-grid h3 {
   margin-top: 0;
   font-size: 15.5px;
   font-weight: 600;
   letter-spacing: 0;
-  color: white;
 }
 .guarantee-grid p {
   margin-top: 4px;
   font-size: 13.5px;
   line-height: 1.5;
-  color: rgb(255 255 255 / 72%);
+  color: var(--muted);
 }
 .process-section {
   padding-block: 96px;
@@ -1361,18 +1334,19 @@ main h2 {
   border-radius: 6px;
   background: white;
 }
+.step-illus {
+  display: block;
+  width: 110px;
+  height: 110px;
+}
 .step-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #ee7a22;
-  font-family: var(--font-display);
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  color: var(--ink);
+  display: block;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ee7a22;
 }
 .process-grid li {
   position: relative;
@@ -1386,7 +1360,7 @@ main h2 {
   background: #ee7a22;
 }
 .process-grid h3 {
-  margin-top: 22px;
+  margin-top: 8px;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.01em;
