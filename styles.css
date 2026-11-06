@@ -1259,7 +1259,7 @@ main h2 {
 }
 .process-section {
   padding-block: 96px;
-  background: var(--soft);
+  background: white;
 }
 .center-heading {
   max-width: 620px;
@@ -1280,6 +1280,7 @@ main h2 {
 }
 .process-grid li {
   padding: 32px 28px;
+  border: 1px solid var(--line);
   border-radius: 6px;
   background: white;
 }
