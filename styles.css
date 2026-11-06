@@ -1091,11 +1091,6 @@ main h2 {
   height: 20px;
   color: #ffb36b;
 }
-.care-list .icon {
-  width: 20px;
-  height: 20px;
-  color: var(--brand);
-}
 .section {
   padding-block: 96px;
 }
@@ -1217,52 +1212,6 @@ main h2 {
 }
 .clients-grid .is-square {
   border-radius: 14px;
-}
-.split {
-  padding-block: 0 96px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
-  align-items: center;
-}
-.split-media {
-  aspect-ratio: 5 / 4;
-  overflow: hidden;
-  border-radius: 4px;
-}
-.split-media img {
-  width: 100%;
-  height: 100%;
-}
-.split-copy > p {
-  max-width: 480px;
-  margin-top: 18px;
-  color: var(--muted);
-}
-.care-list {
-  margin: 32px 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--line);
-}
-.care-list li {
-  display: flex;
-  gap: 14px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
-}
-.care-list .icon {
-  margin-top: 2px;
-}
-.care-list h3 {
-  font-size: 15.5px;
-  font-weight: 600;
-  letter-spacing: 0;
-}
-.care-list p {
-  margin-top: 3px;
-  font-size: 14.5px;
-  color: var(--muted);
 }
 .guarantees-section {
   padding-block: 56px 64px;
@@ -1651,11 +1600,6 @@ main h2 {
   }
   .clients-grid img {
     height: 84px;
-  }
-  .split {
-    padding-block: 0 64px;
-    grid-template-columns: 1fr;
-    gap: 32px;
   }
   .process-section {
     padding-block: 64px;
