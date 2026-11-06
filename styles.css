@@ -1176,6 +1176,37 @@ main h2 {
 .service-extra strong {
   color: var(--ink);
 }
+.clients-section {
+  padding-block: 0 96px;
+}
+.clients-title {
+  margin: 0 0 32px;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--muted);
+}
+.clients-grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 28px 64px;
+}
+.clients-grid img {
+  display: block;
+  width: auto;
+  height: 72px;
+}
+.clients-grid .is-square {
+  border-radius: 10px;
+}
 .split {
   padding-block: 0 96px;
   display: grid;
@@ -1618,6 +1649,15 @@ main h2 {
     padding: 20px;
     flex-direction: column;
     align-items: flex-start;
+  }
+  .clients-section {
+    padding-block: 0 64px;
+  }
+  .clients-grid {
+    gap: 20px 32px;
+  }
+  .clients-grid img {
+    height: 56px;
   }
   .split {
     padding-block: 0 64px;
