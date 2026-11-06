@@ -1177,7 +1177,8 @@ main h2 {
   color: var(--ink);
 }
 .clients-section {
-  padding-block: 56px 24px;
+  padding-block: 56px;
+  background: #f3f1f4;
 }
 .clients-title {
   margin: 0 0 36px;
@@ -1201,6 +1202,11 @@ main h2 {
 .clients-grid li {
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 190px;
+  padding: 20px 28px;
+  background: white;
+  border-radius: 12px;
 }
 .clients-grid img {
   display: block;
@@ -1656,7 +1662,11 @@ main h2 {
     align-items: flex-start;
   }
   .clients-section {
-    padding-block: 40px 8px;
+    padding-block: 40px;
+  }
+  .clients-grid li {
+    min-height: 0;
+    padding: 16px;
   }
   .clients-grid {
     grid-template-columns: repeat(2, 1fr);
